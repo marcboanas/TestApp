@@ -1,0 +1,37 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container" id="header-nav">
+      <nav>
+      
+      
+      
+              <ul class="nav pull-left navigation">
+          <% if signed_in? %>
+            <li><%= link_to "Home", root_path %></li>
+          <% else %>
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Pricing", root_path %></li>
+            <li class="yellow"><%= link_to "Start your Free Trail", root_path %></li>
+
+          <% end %>
+        </ul>
+        
+        
+        
+        
+        <ul class="nav pull-right navigation">
+          <% if signed_in? %>
+            <li><%= link_to "Users", users_path %></li>
+            <li id="fat-menu" class="dropdown">
+            <li><%= link_to "Profile", current_user %></li>
+            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+            <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+            </li>
+          <% else %>
+            <li><%= link_to "Sign in", signin_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

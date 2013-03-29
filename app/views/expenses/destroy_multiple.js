@@ -1,0 +1,1 @@
+$("#expenses").html("<%= escape_javascript(render :partial => 'shared/expense_list' ) %>");

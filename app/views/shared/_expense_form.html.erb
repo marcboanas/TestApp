@@ -1,0 +1,9 @@
+<%= simple_form_for @expense, :validate => false, :remote => true, :html => { :class => 'form-inline' } do |f| %>
+ <%= f.input_field :date, :placeholder => "Date", :class => "custom", :as => :date_picker %>
+  <%= f.input_field :amount, :placeholder => "Amount", :class => "custom" %>
+  <%= f.input_field :expense_type, :collection => @type, :include_blank => false, :class => "custom", :prompt => "Select a type" %>
+  <% if false %>
+  <%= f.input_field :description, :placeholder => "Description", :class => "custom" %>
+  <% end %>
+  <%= f.submit "Add Expense", class: "btn btn-large btn-primary custom" %>
+<% end %>

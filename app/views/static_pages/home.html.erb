@@ -1,0 +1,34 @@
+<% if signed_in? %>
+  <div class="row">
+  <div class="main custom span12">
+  <div class="header custom">
+  Income
+  </div>
+    <div class="form">
+    <%= render 'shared/income_form' %>
+    </div>
+    <div id="incomes">
+    <%= render 'shared/income_list' %>
+    </div>
+  </div>
+  </div>
+  
+  <div class="row">
+  <div class="main custom span12">
+  <div class="header custom">
+  Expenses
+  </div>
+    <div class="form">
+    <%= render 'shared/expense_form' %>
+    </div>
+    
+    <div id="expenses">
+    <%= render 'shared/expense_list' %>
+    </div>
+  
+  </div>
+    
+  </div>  
+<% else %>
+    <%= render 'users/newuserform' %>
+<% end %> 

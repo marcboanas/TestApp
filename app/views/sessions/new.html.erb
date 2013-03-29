@@ -1,0 +1,20 @@
+<% provide(:title, "Sign in") %>
+
+<div class="newform">
+
+<div class="row">
+    <%= simple_form_for(:session, url: sessions_path, :html => { }) do |f| %>
+
+      <%= f.input_field :email, placeholder: "Email", :class => "custom" %>
+      
+      <%= f.input_field :password, placeholder: "Password", :class => "custom" %>
+
+      <%= f.submit "Sign in to your Account", class: "btn btn-large btn-primary custom" %>
+    <% end %>
+</div>
+<div class="row">
+    <p><%= link_to "forgotten password?", new_password_reset_path, class: "black" %></p>
+</div>
+
+</div>
+

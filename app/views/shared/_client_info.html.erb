@@ -1,0 +1,27 @@
+      <% if params.has_key?(:start_date) %>
+   <% @start_date = params[:start_date].to_date.beginning_of_month %>
+   <% @end_date = params[:start_date].to_date.end_of_month %>
+   <% else %>
+   <% @start_date = Date.today.beginning_of_month %>
+   <% @end_date = Date.today.end_of_month %>
+   <% end %>
+      
+   <% current_user.clients.each do |c| %>
+      <div><%= c.name %></div>
+   <% if c.name? %>
+   <div><%= link_to "delete", c, method: :delete,
+                data: { confirm: "You sure?" },
+                title: c.name, :remote => true %>
+   </div>
+   <% end %>
+   <% @totalincome = [] %>
+      <% c.incomes.each do |i| %>
+   <% if i.date? && (@start_date..@end_date).cover?(i.date) %>
+      <div><%= i.date %></div>
+   <% end %>
+      <% end %>
+   <% if c.name? %>
+   <div><%= "Total Income: " + c.incomes.sum(&:amount).to_s %></div>
+   <div><%= "Total Hours: " + c.incomes.sum(&:duration).to_s %></div><br/>
+   <% end %>
+      <% end %>

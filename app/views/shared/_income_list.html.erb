@@ -1,0 +1,52 @@
+<div class=row">
+<div class="span11" style="margin-left: 0px;">
+<table class="table table-bordered custom">
+<thead>
+<tr><th>Income</th></tr>
+<tr>
+<th>Date</th>
+<th>Name</th>
+<th>Duration</th>
+<th>Amount</th>
+<th>Select</th>
+</tr>
+</thead>
+<tbody>
+<% if @incomes.present? %>
+
+<%= form_tag destroy_multiple_incomes_path, :remote => true, method: :delete do %>
+
+<% @incomes.each do |income| %>
+
+<tr>
+<td><%= best_in_place income, :date, type: :date, :inner_class => "custom_in_place" %></td>
+<td>
+<%= best_in_place income, :client_id, :type => :select, :collection => Client.where("user_id = ?", current_user.id).select("id, name").map {|x| [x.id, x.name] }, :inner_class => "custom_in_place" %>
+</td>
+<td><%= best_in_place income, :duration, :inner_class => "custom_in_place" %></td>
+<td><%= best_in_place income, :amount, :inner_class => "custom_in_place" %></td>
+<td><%= check_box_tag "incomes[]", income.id %></td>
+</tr>
+
+<% end %>
+
+<tr>
+<td><b>Total</b></td>
+<td></td>
+<td><b><%= @incomes.map(&:duration).inject(:+) %></b></td>
+<td><b><%= @incomes.map(&:amount).inject(:+) %></b></td>
+<td>
+
+<%= button_tag(type: "submit", class: "btn btn-large btn-primary custom", style: "margin-top: 0px;") do %>
+    Delete Selected
+<% end %>
+
+</td>
+</tr>
+
+<% end %>
+<% end %>
+</tbody>
+</table>
+</div>
+</div>

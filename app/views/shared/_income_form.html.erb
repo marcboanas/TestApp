@@ -1,0 +1,13 @@
+
+
+<%= simple_form_for @income, :validate => false, :remote => true, :html => { :class => 'form-inline' } do |f| %>
+
+ <%= f.input_field :date, :placeholder => "Date", :class => "custom", :as => :date_picker %>
+ 
+ <%= f.input_field :amount, :placeholder => "Amount" %>
+ <%= f.input_field :client_id, :collection => Client.where(:user_id => current_user.id), :include_blank => false, :class => "custom", :prompt =>  "Select a pupil" %>
+ <%= f.input_field :duration, :placeholder => "Lesson Length", :class => "custom" %>
+  <%= f.submit "Add Income", class: "btn btn-large btn-primary custom" %>
+  
+<% end %>
+

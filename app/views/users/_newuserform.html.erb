@@ -1,0 +1,16 @@
+<div class="newform">
+    
+    <%= simple_form_for @user, :validate => false, :html => { :class => 'form-inline' } do |user| %>
+    
+      <%= user.input_field :name, placeholder: "Full Name", :class => "custom" %>
+
+      <%= user.input_field :email, placeholder: "Email", :class => "custom" %>
+
+      <%= user.input_field :password, placeholder: "Password", :hint => "Minimum length of 6 characters", :class => "custom" %>
+
+      <%= user.input_field :password_confirmation, placeholder: "Confirm Password", :class => "custom" %>
+
+      <%= user.submit "Start Your Free Trail", class: "btn btn-large btn-primary custom" %>
+    <% end %>
+    
+</div>

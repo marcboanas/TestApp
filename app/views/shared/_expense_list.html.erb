@@ -1,0 +1,58 @@
+<% @type.each do |t| %>
+
+<% @expense_type_total = [] %>
+
+<div class="row">
+<div class="span11">
+<table class="table table-bordered custom">
+<thead>
+<tr><th><%= t %></th></tr>
+<tr>
+<th>Date</th>
+<th>Type</th>
+<th>Amount</th>
+<th>Select</th>
+</tr>
+</thead>
+<tbody>
+<% if @expenses.present? %>
+
+<%= form_tag destroy_multiple_expenses_path, :remote => true, method: :delete do %>
+
+<% @expenses.each do |expense| %>
+
+<% if expense.expense_type == t %>
+
+<% @expense_type_total.push(expense.amount) %>
+
+<tr>
+<td><%= best_in_place expense, :date, type: :date, :inner_class => "custom_in_place" %></td>
+<td><%= best_in_place expense, :expense_type, :inner_class => "custom_in_place" %></td>
+<td><%= best_in_place expense, :amount, :inner_class => "custom_in_place" %></td>
+<td><%= check_box_tag "expenses[]", expense.id %></td>
+</tr>
+
+<% end %>
+<% end %>
+
+<tr>
+<td><b>Total</b></td>
+<td></td>
+<td><b><%= @expense_type_total.sum %></b></td>
+<td>
+
+<%= button_tag(type: "submit", class: "btn btn-large btn-primary custom", style: "margin-top: 0px;") do %>
+    Delete Selected
+<% end %>
+
+</td>
+</tr>
+
+<% end %>
+<% end %>
+</tbody>
+</table>
+</div>
+</div>
+
+<% end %>

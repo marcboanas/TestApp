@@ -1,0 +1,9 @@
+<tr>
+<td><%= best_in_place income, :date %></td>
+<td>
+<%= best_in_place income, :client_id, :type => :select, :collection => Client.where("user_id = ?", current_user.id).select("id, name").map {|x| [x.id, x.name] } %>
+</td>
+<td><%= best_in_place income, :duration %></td>
+<td><%= best_in_place income, :amount %></td>
+<td><%= check_box_tag "incomes[]", income.id %></td>
+</tr>
