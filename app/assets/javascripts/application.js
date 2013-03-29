@@ -13,15 +13,71 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require bootstrap
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require jquery.purr
+//= require dataTables/jquery.dataTables
 //= require best_in_place
+//= require jquery.tablescroll
 //= require_tree .
 
-$(function() {
-
-$("input.date_picker").datepicker({dateFormat:'mm/dd/yy', minDate: new Date(2013,02,01), maxDate: new Date(2013,02,31) });
-
+jQuery(function($){
+  $.datepicker.setDefaults({ dateFormat: 'yymmdd' });
 });
+
+$(function() {
+$(".side-list1").sortable();
+$(".side-list1").disableSelection();
+});
+
+$(function() {
+$("a.item").click( function() {
+$("a.item").removeClass("active activePrev");
+$(this).addClass("active");
+var date = $(this).attr('name');
+$(this).parent().prevAll(":has(.item):first").children().addClass("activePrev");
+$('#incomes').load('/income_table?date=' + date, function(){
+	        loadDiv();	
+});
+$('#expenses').load('/expense_table?date=' + date, function(){
+		        loadDiv();
+});
+$('#summary').load('/summary_boxes?date=' + date, function(){
+		        loadDiv();
+});
+$('#income-form-div').load('/income_form', function(){
+		        loadDiv();
+});
+$('#expense-form-div').load('/expense_form', function(){
+		        loadDiv();
+});
+var text = $(this).text();
+$('.datebox').html(text);
+});	
+});
+
+$(function() { 
+$(".best_in_place").addClass("cursor");	
+});
+
+$(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});
+	
+$(function() {
+  $("a.item").removeClass("active activePrev");
+  var date = $('.datebox').attr('id');
+  var date = parseInt(date.substr(0, 6));
+  $('[name^="' + date + '"]').addClass("active");
+  var text = $('[name^="' + date + '"]').text();
+	if (text.length <= 0) {
+		text = "Full Year Overview";
+		$('[name="all"]').addClass('active');
+	}
+  $('.datebox').html(text);
+  $('.datebox').show();
+});
+
+
+

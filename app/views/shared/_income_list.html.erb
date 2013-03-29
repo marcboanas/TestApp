@@ -1,52 +1,164 @@
-<div class=row">
-<div class="span11" style="margin-left: 0px;">
-<table class="table table-bordered custom">
-<thead>
-<tr><th>Income</th></tr>
+ <script type="text/javascript" src="jquery.js"></script>          
+ <script type="text/javascript">
+
+$(function() {
+
+    $('tbody > tr').addClass('cursor');
+    
+    $('tr').hover( function() {
+    
+    $(this).addClass('hover'); },
+    
+    function() {
+    
+    $(this).removeClass('hover');
+    
+    });
+    
+    $('.best_in_place').best_in_place().addClass("cursor");
+    
+            var recent = 0;
+			var count = $('.updated_at').length;
+            
+            $('.updated_at').closest('tr').removeClass('recent');
+            
+		    $('.updated_at').each(function(i, obj) {
+			var update = $(this).attr("id");
+			if ( recent < update) {
+				recent = update;
+			}
+			if ( i+1 == count) {
+				$('#' + recent).closest('tr').addClass('recent');			
+			}
+			});
+            
+    $(function loadDiv() {
+    $('.best_in_place').bind("ajax:success", function (event, data) {
+        var date = $('.active').attr('name');
+        $('#incomes').load('/income_table?date=' + date, function(){
+        loadDiv();
+});
+        $('#summary').load('/summary_boxes?date=' + date, function(){
+        loadDiv();
+});
+});
+});
+
+    $('input:checkbox').addClass("cursor").closest('td').addClass("cursor");
+    
+    $('input:checkbox[id="incomes_"]').closest('td').click( function selectDelete() {
+    
+    if( $(this).closest('tr').hasClass('selected')) {
+    
+    $(this).find('input:checkbox').prop('checked', false);
+    $(this).closest('tr').removeClass('selected');
+    
+    }
+    
+    else {
+    
+    $(this).find('input:checkbox').prop('checked', true);
+    $(this).closest('tr').addClass('selected');
+    
+    }
+    
+    });
+    
+    $('.selectAll').addClass('cursor');
+    
+    $('.selectAll').click( function(e) {
+    
+    var table = $(e.target).parents('table:first');
+    
+    $('input:checkbox', table).each(function(i, obj) {
+    
+    $(this).prop('checked', true);
+    
+    $(this).closest('tr').addClass('selected');
+    
+    });
+    
+    });
+    
+    $('.clearAll').addClass('cursor');
+    
+    $('.clearAll').click( function(e) {
+    
+    var table = $(e.target).parents('table:first');
+    
+    $('input:checkbox', table).each(function(i, obj) {
+    
+    $(this).prop('checked', false);
+    
+    $(this).closest('tr').removeClass('selected');
+    
+    });
+    
+    });
+
+});
+</script>
+
+
+<div class="">
+<table class="main-table" id="table-income">
+<thead class="income">
+
+<% if false %>
+<tr><td colspan="5" class="text-center">Income</td></tr>
+<% end %>
+
 <tr>
 <th>Date</th>
 <th>Name</th>
-<th>Duration</th>
-<th>Amount</th>
-<th>Select</th>
+<th>Lesson Length (mins)</th>
+<th>Amount (£)</th>
+<th><button class="button selectAll">Select All</button><button class="button clearAll">Clear</button></th>
 </tr>
 </thead>
-<tbody>
-<% if @incomes.present? %>
+<tbody class="income">
+
 
 <%= form_tag destroy_multiple_incomes_path, :remote => true, method: :delete do %>
 
 <% @incomes.each do |income| %>
 
 <tr>
-<td><%= best_in_place income, :date, type: :date, :inner_class => "custom_in_place" %></td>
+<td id="<%= income.updated_at.to_i %>" name="<%= DateTime.now.to_i %>" class="updated_at" style="display: none"><%= income.updated_at %></td>
+<td><%= best_in_place income, :date, type: :date, :inner_class => "short", :display_as => 'date_format' %></td>
 <td>
-<%= best_in_place income, :client_id, :type => :select, :collection => Client.where("user_id = ?", current_user.id).select("id, name").map {|x| [x.id, x.name] }, :inner_class => "custom_in_place" %>
+<%= best_in_place income, :client_id, :type => :select, :collection => Client.where("user_id = ?", current_user.id).select("id, name").map {|x| [x.id, x.name] }, :inner_class => "" %>
 </td>
-<td><%= best_in_place income, :duration, :inner_class => "custom_in_place" %></td>
-<td><%= best_in_place income, :amount, :inner_class => "custom_in_place" %></td>
+<td><%= best_in_place income, :duration, :inner_class => "short" %></td>
+<td><%= best_in_place income, :amount, :inner_class => "short", :display_with => :number_to_currency, :helper_options => {:unit => "£"} %></td>
 <td><%= check_box_tag "incomes[]", income.id %></td>
 </tr>
 
 <% end %>
-
+</tbody>
+<tfoot class="income">
 <tr>
 <td><b>Total</b></td>
 <td></td>
+<% if @incomes.count >= 1 %>
 <td><b><%= @incomes.map(&:duration).inject(:+) %></b></td>
-<td><b><%= @incomes.map(&:amount).inject(:+) %></b></td>
+<td><b><%= number_to_currency(@incomes.map(&:amount).inject(:+), :unit => "£") %></b></td>
+<% else %>
+<td><b>0.0</b></td>
+<td><b>£0.00</b></td>
+<% end %>
+
 <td>
 
-<%= button_tag(type: "submit", class: "btn btn-large btn-primary custom", style: "margin-top: 0px;") do %>
+<%= button_tag(type: "submit", id: "delete-button", :onclick => "return confirm('Are you sure you wish to delete?')") do %>
     Delete Selected
 <% end %>
 
 </td>
 </tr>
+</tfoot>
 
 <% end %>
-<% end %>
-</tbody>
 </table>
 </div>
 </div>

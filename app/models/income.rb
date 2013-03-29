@@ -1,3 +1,4 @@
+
 class Income < ActiveRecord::Base
     attr_accessible :amount, :client_id, :date, :duration
     belongs_to :client

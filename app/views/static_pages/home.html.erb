@@ -1,6 +1,89 @@
 <% if signed_in? %>
-  <div class="row">
-  <div class="main custom span12">
+
+<div class="list">
+<div class="list-header">
+<div class="logo">Account Hero</div>
+</div>
+<div class="list-items">
+<ul class="side-list">
+
+    <li class="list-item"><a class="item" name="all"><b>Full Year Overview</b></a></li>
+
+    <% @dates = (Date.today..(Date.today + 1.year)).to_a %>
+    <% @date_months = @dates.map {|d| Date.new(d.year, d.month, 1) }.uniq %>
+    <% @date_months.each do |month| %>
+    <li class="list-item"><a class="item" name="<%= month.strftime('%Y%m%d') %>" id="<%= (month + 1.month).strftime('%Y%m%d') %>"><%= month.strftime("%B %Y") %><span class="icon-span"><i class=""></i></span></a></li>
+    <% end %>
+    
+</ul>
+</div>
+
+<div class="logout"><%= link_to "Sign out", signout_path, method: "delete" %></div>
+</div>
+
+<div class="console">
+
+<div class="navbar">
+<div class="datebox" id="<%= params[:date] %>">Full Year Overview</div>
+</div>
+
+<div id="summary">
+<%= render 'shared/summary_boxes' %>
+</div>
+
+<div id="income-form">
+  <div class="main-header">
+  Add Income
+  </div>
+  <div id="income-form-div" class="form-container">
+  <%= render 'shared/income_form' %>
+  </div>
+</div>
+
+
+<div id="main-incomes">
+  <div class="main-header">
+  Income
+  <span class="icon-span"><i class=""></i></span>
+  </div>
+  <div id="incomes" class="table-container">
+  <%= render 'shared/income_list' %>
+  </div>
+
+<div id="expense-form">
+  <div class="main-header">
+  Add Expense
+  </div>
+  <div id="expense-form-div" class="form-container expense-form">
+  <%= render 'shared/expense_form' %>
+  </div>
+</div>
+
+<div id="main-expenses">
+  <div class="main-header">
+  Expenses
+  <span class="icon-span"><i class=""></i></span>
+  </div>
+  <div id="expenses" class="table-container">
+  <%= render 'shared/expense_list' %>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+<% end %>
+
+
+<% if false %>
+
+<% if signed_in? %>
+  <div class="row-fluid">
+  <div class="span3" id="emptysidebar">
+  <div class="span2" id="sidebar">Date</div>
+  </div>
+  <div class="main custom span6">
   <div class="header custom">
   Income
   </div>
@@ -11,24 +94,20 @@
     <%= render 'shared/income_list' %>
     </div>
   </div>
-  </div>
-  
-  <div class="row">
-  <div class="main custom span12">
+  <div class="main custom span6">
   <div class="header custom">
   Expenses
   </div>
     <div class="form">
     <%= render 'shared/expense_form' %>
     </div>
-    
     <div id="expenses">
     <%= render 'shared/expense_list' %>
-    </div>
-  
+    </div>  
   </div>
-    
   </div>  
 <% else %>
     <%= render 'users/newuserform' %>
 <% end %> 
+
+<% end %>

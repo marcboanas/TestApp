@@ -1,0 +1,47 @@
+<div class="summary-box first income">
+<div class="summary-tag income"></div>
+Income</br>
+<% if !@incomes.empty? %>
+<%= number_to_currency(@incomes.map(&:amount).inject(:+), :unit => "£") %>
+<% else %>
+<%= '£0.00' %>
+<% end %>
+</div>
+<div class="summary-box expense">
+<div class="summary-tag expense"></div>
+Expense <br>
+<% if !@expenses.empty? %>
+<% @totalexpense = @expenses.map(&:amount) %>
+<% @total = [] %>
+<% @totalexpense.each do |e| %>
+<% if e %>
+<% @total.push(e) %>
+<% end %>
+<% end %>
+<%= number_to_currency(@total.sum, :unit => "£") %>
+<% else %>
+<%= '£0.00' %>
+<% end %>
+</div>
+<div class="summary-box profit">
+<div class="summary-tag profit"></div>
+Profit <br>
+<% if !@incomes.empty? && !@expenses.empty? %>
+<%= number_to_currency(@incomes.map(&:amount).inject(:+) - @total.sum, :unit => "£") %>
+<% elsif @incomes.empty? && !@expenses.empty? %>
+<%= number_to_currency(- @total.sum, :unit => "£") %>
+<% elsif !@incomes.empty? %>
+<%= number_to_currency(@incomes.map(&:amount).inject(:+), :unit => "£") %>
+<% else %>
+<%= '£0.00' %>
+<% end %>
+</div>
+<div class="summary-box hours-worked">
+<div class="summary-tag hours-worked"></div>
+Hours Worked <br>
+<% if !@incomes.empty? %>
+<%= @incomes.map(&:duration).inject(:+) %>
+<% else %>
+<%= '£0.00' %>
+<% end %>
+</div>

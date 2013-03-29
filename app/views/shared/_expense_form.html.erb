@@ -1,9 +1,51 @@
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+
+$(function() {
+if ($('.active').attr('name') != "all") {
+	if ($('.active').length > 0) {
+        var startdate = $('.active').attr('name');
+		var x = parseInt((startdate).substr(0, 4));
+		var y = parseInt((startdate).substr(4, 2)) - 1;
+		var z = parseInt((startdate).substr(6, 2));
+        var enddate = $('.active').attr('id');
+		var a = parseInt((enddate).substr(0, 4));
+		var b = parseInt((enddate).substr(4, 2)) - 1;
+		var c = parseInt((enddate).substr(6, 2)) - 1;	
+	}
+	else {
+	var x = parseInt(("20130201").substr(0, 4));
+	var y = parseInt(("20130201").substr(4, 2));
+	var z = parseInt(("20130201").substr(6, 2));
+	var a = parseInt(("20140201").substr(0, 4));
+	var b = parseInt(("20140201").substr(4, 2));
+	var c = parseInt(("20140201").substr(6, 2));
+	}
+}
+else {
+	var x = parseInt(("20130201").substr(0, 4));
+	var y = parseInt(("20130201").substr(4, 2));
+	var z = parseInt(("20130201").substr(6, 2));
+	var a = parseInt(("20140201").substr(0, 4));
+	var b = parseInt(("20140201").substr(4, 2));
+	var c = parseInt(("20140201").substr(6, 2));
+}
+$(".date_picker").datepicker({dateFormat:'yy/mm/dd', minDate: new Date(x,y,z), maxDate: new Date(a,b,c) });
+});
+
+jQuery(function($){
+  $.datepicker.setDefaults({ dateFormat: 'yymmdd' });
+});
+
+</script>
+
 <%= simple_form_for @expense, :validate => false, :remote => true, :html => { :class => 'form-inline' } do |f| %>
  <%= f.input_field :date, :placeholder => "Date", :class => "custom", :as => :date_picker %>
   <%= f.input_field :amount, :placeholder => "Amount", :class => "custom" %>
   <%= f.input_field :expense_type, :collection => @type, :include_blank => false, :class => "custom", :prompt => "Select a type" %>
-  <% if false %>
+  <%= f.submit "Add Expense", class: "submit add" %><span id="success-message" class="success-message-expense">Expense added successfully.</span>
+  
+  </br>
+  
   <%= f.input_field :description, :placeholder => "Description", :class => "custom" %>
-  <% end %>
-  <%= f.submit "Add Expense", class: "btn btn-large btn-primary custom" %>
 <% end %>

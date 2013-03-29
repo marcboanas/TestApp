@@ -1,17 +1,119 @@
+ <script type="text/javascript" src="jquery.js"></script>          
+ <script type="text/javascript">
+
+$(function() {
+
+    $('tbody > tr').addClass('cursor');
+    
+    $('tr').hover( function() {
+    
+    $(this).addClass('hover'); },
+    
+    function() {
+    
+    $(this).removeClass('hover');
+    
+    });
+    
+    $('.best_in_place').best_in_place().addClass("cursor");
+    
+            var recent = 0;
+			var count = $('.updated_at').length;
+            
+            $('.updated_at').closest('tr').removeClass('recent');
+
+		    $('.updated_at').each(function(i, obj) {
+			var update = $(this).attr("id");
+			if ( recent < update) {
+				recent = update;
+			}
+			if ( i+1 == count) {
+				$('#' + recent).closest('tr').addClass('recent');			
+			}
+			});
+            
+    $(function loadDiv() {
+    $('.best_in_place').bind("ajax:success", function (event, data) {
+        var date = $('.active').attr('name');
+        $('#expenses').load('/expense_table?date=' + date, function(){
+        loadDiv();
+});
+        $('#summary').load('/summary_boxes?date=' + date, function(){
+        loadDiv();
+});
+});
+});
+
+
+    $('input:checkbox').addClass("cursor").closest('td').addClass("cursor");
+    
+    $('input:checkbox[id="expenses_"]').closest('td').click( function selectDelete() {
+    
+    if( $(this).closest('tr').hasClass('selected')) {
+    
+    $(this).find('input:checkbox').prop('checked', false);
+    $(this).closest('tr').removeClass('selected');
+    
+    }
+    
+    else {
+    
+    $(this).find('input:checkbox').prop('checked', true);
+    $(this).closest('tr').addClass('selected');
+    
+    }
+    
+    });
+    
+    $('.selectAll').addClass('cursor');
+    
+    $('.selectAll').click( function(e) {
+    
+    var table = $(e.target).parents('table:first');
+    
+    $('input:checkbox', table).each(function(i, obj) {
+    
+    $(this).prop('checked', true);
+    
+    $(this).closest('tr').addClass('selected');
+    
+    });
+    
+    });
+    
+    $('.clearAll').addClass('cursor');
+    
+    $('.clearAll').click( function(e) {
+    
+    var table = $(e.target).parents('table:first');
+    
+    $('input:checkbox', table).each(function(i, obj) {
+    
+    $(this).prop('checked', false);
+    
+    $(this).closest('tr').removeClass('selected');
+    
+    });
+    
+    });
+
+});
+</script>
+
 <% @type.each do |t| %>
 
 <% @expense_type_total = [] %>
 
-<div class="row">
-<div class="span11">
-<table class="table table-bordered custom">
+<div>
+<table id="<%= t %>" class="main-table expense-table">
 <thead>
-<tr><th><%= t %></th></tr>
+<tr><th colspan="5"><%= t %></th></tr>
 <tr>
 <th>Date</th>
 <th>Type</th>
+<th class="description">Description</th>
 <th>Amount</th>
-<th>Select</th>
+<th><button class="button selectAll">Select All</button><button class="button clearAll">Clear</button></th>
 </tr>
 </thead>
 <tbody>
@@ -26,33 +128,50 @@
 <% @expense_type_total.push(expense.amount) %>
 
 <tr>
-<td><%= best_in_place expense, :date, type: :date, :inner_class => "custom_in_place" %></td>
-<td><%= best_in_place expense, :expense_type, :inner_class => "custom_in_place" %></td>
-<td><%= best_in_place expense, :amount, :inner_class => "custom_in_place" %></td>
+<td id="<%= expense.updated_at.to_i %>" name="<%= DateTime.now.to_i %>" class="updated_at" style="display: none"><%= expense.updated_at %></td>
+<td><%= best_in_place expense, :date, type: :date, :inner_class => "short", :display_as => 'date_format' %></td>
+
+<td><%= best_in_place expense, :expense_type, :type => :select, :collection => [["Fuel", "Fuel"], ["Car Costs", "Car Costs"], ["Marketing", "Marketing"], ["Franchise Costs", "Franchise Costs"], ["Other","Other"]] %></td>
+
+<td class="description"><%= best_in_place expense, :description, :inner_class => "short" %></td>
+<td><%= best_in_place expense, :amount, :inner_class => "short", :display_with => :number_to_currency, :helper_options => {:unit => "£"} %></td>
 <td><%= check_box_tag "expenses[]", expense.id %></td>
 </tr>
 
 <% end %>
 <% end %>
-
+</tbody>
+<tfoot>
 <tr>
 <td><b>Total</b></td>
 <td></td>
-<td><b><%= @expense_type_total.sum %></b></td>
+<td class="description"></td>
+<td><b><%= number_to_currency(@expense_type_total.sum, :unit => "£") %></b></td>
 <td>
 
-<%= button_tag(type: "submit", class: "btn btn-large btn-primary custom", style: "margin-top: 0px;") do %>
+<%= button_tag type: "submit", class: "submit", :onclick => "return confirm('Are you sure you wish to delete?')" do %>
     Delete Selected
 <% end %>
+<% end %>
+<% end %>
+<% if @expenses.empty? %> 
+</tbody>
+<tfoot>
+<tr>
+<td><b>Total</b></td>
+<td></td>
+<td class="description"></td>
+<td><b>£0.00</b></td>
+<td>
 
+<%= button_tag type: "submit", class: "submit", :confirm => 'question?' do %>
+    Delete Selected
+<% end %>
 </td>
 </tr>
-
+</tfoot>
 <% end %>
-<% end %>
-</tbody>
 </table>
-</div>
 </div>
 
 <% end %>

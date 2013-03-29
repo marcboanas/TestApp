@@ -1,6 +1,11 @@
 AccountsHero::Application.routes.draw do
   
   get "password_resets/new"
+  get 'income_table', :controller => 'incomes', :action => :income_table
+  get 'expense_table', :controller => 'expenses', :action => :expense_table
+  get 'income_form', :controller => 'incomes', :action => :income_form
+  get 'expense_form', :controller => 'expenses', :action => :expense_form
+  get 'summary_boxes', :controller => 'static_pages', :action => :summary_boxes
 
     resources :users do
         member do
