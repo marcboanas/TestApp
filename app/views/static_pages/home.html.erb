@@ -7,7 +7,7 @@
 <div class="list-items">
 <ul class="side-list">
 
-    <li class="list-item"><a class="item" name="all"><b>Full Year Overview</b></a></li>
+    <li class="list-item"><a class="item" name="all" style="border-top: 1px solid black; border-bottom: 1px solid black; border-left: 5px solid black">Full Year Overview<span class="icon-span"><i class="icon-briefcase"></i></span></a></li>
 
     <% @dates = (Date.today..(Date.today + 1.year)).to_a %>
     <% @date_months = @dates.map {|d| Date.new(d.year, d.month, 1) }.uniq %>
@@ -33,7 +33,7 @@
 
 <div id="income-form">
   <div class="main-header">
-  Add Income <i class="icon-camera-retro"></i> icon-camera-retro
+  Add Income
   </div>
   <div id="income-form-div" class="form-container">
   <%= render 'shared/income_form' %>
