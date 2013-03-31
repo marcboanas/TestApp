@@ -1,0 +1,70 @@
+<div class="list">
+<div class="list-header">
+<%= link_to root_path, :class => "decoration-none" do %>
+<div class="logo">
+<b>Account Hero</b>
+</div>
+<% end %>
+</div>
+<div class="list-items">
+<ul class="side-list">
+
+    <li class="list-item">
+
+    <%= link_to root_path, :class => "item main", :name => "all" do %>
+    
+    <b>Full Year Overview</b><span class="icon-span"><i class="icon-briefcase"></i></span>
+    
+    <% end %>
+
+    
+    </li>
+
+    <% @dates = (Date.today..(Date.today + 1.year)).to_a %>
+    <% @date_months = @dates.map {|d| Date.new(d.year, d.month, 1) }.uniq %>
+    <% @date_months.each do |month| %>
+    <li class="list-item">
+    
+    <%= link_to root_path + "?date=" + month.strftime('%Y%m%d'), :class => "item", :id => (month + 1.month).strftime('%Y%m%d') do %>
+    
+    <%= month.strftime("%B %Y") %> <span class="icon-span"><i class=""></i></span>
+    
+    <% end %>
+    
+    </li>
+    
+    <% end %>
+    
+    <li class="list-item">
+    <%= link_to new_client_path, :class => "link active" do %>
+    <b>Pupils</b>
+    <span class="icon-span"><i class="icon-group"></i></span>
+    <% end %>
+    </li>
+    
+    <li class="list-item">
+    <%= link_to "#", :class => "link" do %>
+    <b>Your Car</b>
+    <span class="icon-span"><i class="icon-road"></i></span>
+    <% end %>
+    </li>
+    
+    <li class="list-item">
+    <%= link_to "#", :class => "link" do %>
+    <b>Office / Computer Equipment</b>
+    <span class="icon-span"><i class="icon-print"></i></span>
+    <% end %>
+    </li>
+    
+    <li class="list-item">
+    <%= link_to '#', :class => "link" do %>
+    <b>Settings</b>
+    <span class="icon-span"><i class="icon-cogs"></i></span>
+    <% end %>
+    </li>
+    
+</ul>
+</div>
+
+<div class="logout"><%= link_to "Sign out", signout_path, method: "delete" %></div>
+</div>

@@ -62,12 +62,19 @@ width: 270px;
 }
 
 .logo {
+font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+color: rgb(66, 62, 62);
 padding: 13px 0 13px 10px;
 font-size: 13px;
 font-weight: bold;
 text-align: left;
 text-shadow: rgb(255, 255, 255) 0px 1px 0px;
 width: 100%;
+text-decoration: none;
+}
+
+a.decoration-none {
+text-decoration: none;
 }
 
 .list-items {
@@ -87,7 +94,7 @@ font-size: 13px;
 font-weight: normal;
 height: 22px;
 left: 0px;
-position: absolute;
+position: fixed;
 right: 0px;
 border-top: 1px solid rgb(175, 175, 175);
 box-shadow: rgba(0, 0, 0, 0.247059) 0px 1px 2px 0px;
@@ -167,7 +174,7 @@ background-origin: padding-box;
 background-size: auto;
 border-top: 1px solid white;
 border-bottom: 1px solid white;
-border-left: 5px solid white;
+border-left: 0px solid white;
 -webkit-transition: all 0.0s ease;
 -moz-transition: all 0.0s ease;
 -o-transition: all 0.0s ease;
@@ -201,7 +208,7 @@ width: 270px;
 
     &.active {
     background: #b5c5c5;
-    border-left: 5px solid black;
+    border-left: 0px solid black;
     border-right: 0px solid #66ccdd;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
@@ -218,14 +225,14 @@ width: 270px;
     &.main {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    border-left: 5px solid black;
+    border-left: 0px solid black;
     }
 }
 
 a.link {
 border-top: 1px solid black;
 border-bottom: 1px solid black;
-border-left: 5px solid black;
+border-left: 0px solid black;
 -webkit-background-clip: border-box;
 -webkit-background-origin: padding-box;
 -webkit-background-size: auto;
@@ -264,6 +271,18 @@ text-align: left;
 text-decoration: none;
 text-shadow: rgb(255, 255, 255) 0px 1px 0px;
 width: 270px;
+    &.active {
+    background: #b5c5c5;
+    border-left: 0px solid black;
+    border-right: 0px solid #66ccdd;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    color: rgb(66, 62, 62);
+    text-shadow: rgb(0, 0, 0) 0px 0px 0px;
+    -moz-box-shadow: inset 0 0 5px 5px Darken(#4998db, 10);
+    -webkit-box-shadow: inset 0 0 5px 5px Darken(#4998db, 10);
+    box-shadow: inset 0 0 5px 5px Darken(#4998db, 10);
+    }
 }
 
 .console {
@@ -309,7 +328,6 @@ margin-bottom: 30px;
 padding: 0px 10px 10px 10px;;
 position: relative;
 text-decoration: none;
-
 }
 
 #main-expenses {

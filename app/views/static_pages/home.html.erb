@@ -1,8 +1,13 @@
+<% provide(:title, "Home") %>
 <% if signed_in? %>
 
 <div class="list">
 <div class="list-header">
-<div class="logo">Account Hero</div>
+<%= link_to root_path, :class => "decoration-none" do %>
+<div class="logo">
+<b>Account Hero</b>
+</div>
+<% end %>
 </div>
 <div class="list-items">
 <ul class="side-list">
@@ -15,8 +20,33 @@
     <li class="list-item"><a class="item" name="<%= month.strftime('%Y%m%d') %>" id="<%= (month + 1.month).strftime('%Y%m%d') %>"><%= month.strftime("%B %Y") %><span class="icon-span"><i class=""></i></span></a></li>
     <% end %>
     
-    <li class="list-item"><a class="link"><b>Pupils</b><span class="icon-span"><i class="icon-user"></i></span></a></li>
-    <li class="list-item"><a class="link"><b>Settings</b><span class="icon-span"><i class="icon-cogs"></i></span></a></li>
+    <li class="list-item">
+    <%= link_to new_client_path, :class => "link" do %>
+    <b>Pupils</b>
+    <span class="icon-span"><i class="icon-group"></i></span>
+    <% end %>
+    </li>
+    
+    <li class="list-item">
+    <%= link_to "#", :class => "link" do %>
+    <b>Your Car</b>
+    <span class="icon-span"><i class="icon-road"></i></span>
+    <% end %>
+    </li>
+    
+    <li class="list-item">
+    <%= link_to "#", :class => "link" do %>
+    <b>Office / Computer Equipment</b>
+    <span class="icon-span"><i class="icon-print"></i></span>
+    <% end %>
+    </li>
+    
+    <li class="list-item">
+    <%= link_to '#', :class => "link" do %>
+    <b>Settings</b>
+    <span class="icon-span"><i class="icon-cogs"></i></span>
+    <% end %>
+    </li>
     
 </ul>
 </div>

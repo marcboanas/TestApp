@@ -111,7 +111,7 @@ $(function() {
 <tr>
 <th>Date</th>
 <th>Name</th>
-<th>Lesson Length (mins)</th>
+<th>Lesson Length</th>
 <th>Amount (£)</th>
 <th><button class="button selectAll">Select All</button><button class="button clearAll">Clear</button></th>
 </tr>
@@ -129,7 +129,7 @@ $(function() {
 <td>
 <%= best_in_place income, :client_id, :type => :select, :collection => Client.where("user_id = ?", current_user.id).select("id, name").map {|x| [x.id, x.name] }, :inner_class => "" %>
 </td>
-<td><%= best_in_place income, :duration, :inner_class => "short" %></td>
+<td><%= best_in_place income, :duration, :inner_class => "short", :display_as => 'duration_format' %></td>
 <td><%= best_in_place income, :amount, :inner_class => "short", :display_with => :number_to_currency, :helper_options => {:unit => "£"} %></td>
 <td><%= check_box_tag "incomes[]", income.id %></td>
 </tr>
@@ -141,7 +141,10 @@ $(function() {
 <td><b>Total</b></td>
 <td></td>
 <% if @incomes.count >= 1 %>
-<td><b><%= @incomes.map(&:duration).inject(:+) %></b></td>
+<td><b>
+<% @total_seconds = (@incomes.map(&:duration).inject(:+) * 60) %>
+<%= Time.at(@total_seconds).utc.strftime("%H:%M") %>
+</b></td>
 <td><b><%= number_to_currency(@incomes.map(&:amount).inject(:+), :unit => "£") %></b></td>
 <% else %>
 <td><b>0.0</b></td>

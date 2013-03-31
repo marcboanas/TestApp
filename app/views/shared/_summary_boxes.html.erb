@@ -40,8 +40,9 @@ Profit <br>
 <div class="summary-tag hours-worked"></div>
 Hours Worked <br>
 <% if !@incomes.empty? %>
-<%= @incomes.map(&:duration).inject(:+) %>
+<% @total_seconds = (@incomes.map(&:duration).inject(:+) * 60) %>
+<%= Time.at(@total_seconds).utc.strftime("%H:%M") %>
 <% else %>
-<%= '£0.00' %>
+<%= '00:00' %>
 <% end %>
 </div>
