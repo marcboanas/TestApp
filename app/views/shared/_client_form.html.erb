@@ -1,4 +1,4 @@
-<%= simple_form_for @client, :validate => true, :remote => true, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :name, :placeholder => "Client Name" %>
-  <%= f.submit "Create New Client", class: "btn btn-large btn-primary", id: "newclient" %>
+<%= simple_form_for @client, :validate => false, :remote => true, :html => { :class => '' } do |f| %>
+  <%= f.input_field :name, :placeholder => "Pupil Name" %>
+  <%= f.submit "Create New Client", class: "submit add", id: "newclient" %>
 <% end %>

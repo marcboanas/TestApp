@@ -31,6 +31,7 @@ AccountsHero::Application.routes.draw do
   root :to => 'static_pages#home'
   match '/help',    to: 'static_pages#help'
   match '/signup',  to: 'users#new'
+  match '/pupils',  to: 'clients#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 

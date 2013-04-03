@@ -1,15 +1,18 @@
 <div class="summary-box first income">
 <div class="summary-tag income"></div>
 Income</br>
+<div class="amount">
 <% if !@incomes.empty? %>
 <%= number_to_currency(@incomes.map(&:amount).inject(:+), :unit => "£") %>
 <% else %>
 <%= '£0.00' %>
 <% end %>
 </div>
+</div>
 <div class="summary-box expense">
 <div class="summary-tag expense"></div>
 Expense <br>
+<div class="amount">
 <% if !@expenses.empty? %>
 <% @totalexpense = @expenses.map(&:amount) %>
 <% @total = [] %>
@@ -23,9 +26,11 @@ Expense <br>
 <%= '£0.00' %>
 <% end %>
 </div>
+</div>
 <div class="summary-box profit">
 <div class="summary-tag profit"></div>
 Profit <br>
+<div class="amount">
 <% if !@incomes.empty? && !@expenses.empty? %>
 <%= number_to_currency(@incomes.map(&:amount).inject(:+) - @total.sum, :unit => "£") %>
 <% elsif @incomes.empty? && !@expenses.empty? %>
@@ -36,13 +41,16 @@ Profit <br>
 <%= '£0.00' %>
 <% end %>
 </div>
+</div>
 <div class="summary-box hours-worked">
 <div class="summary-tag hours-worked"></div>
 Hours Worked <br>
+<div class="amount">
 <% if !@incomes.empty? %>
 <% @total_seconds = (@incomes.map(&:duration).inject(:+) * 60) %>
 <%= Time.at(@total_seconds).utc.strftime("%H:%M") %>
 <% else %>
 <%= '00:00' %>
 <% end %>
+</div>
 </div>

@@ -6,6 +6,9 @@
 </div>
 <% end %>
 </div>
+
+<% if signed_in? %>
+
 <div class="list-items">
 <ul class="side-list">
 
@@ -36,7 +39,7 @@
     <% end %>
     
     <li class="list-item">
-    <%= link_to new_client_path, :class => "link active" do %>
+    <%= link_to pupils_path, :class => "link active" do %>
     <b>Pupils</b>
     <span class="icon-span"><i class="icon-group"></i></span>
     <% end %>
@@ -57,6 +60,34 @@
     </li>
     
     <li class="list-item">
+    <%= link_to "#", :class => "link" do %>
+    <b>PAYE / Other Income</b>
+    <span class="icon-span"><i class="icon-money"></i></span>
+    <% end %>
+    </li>
+    
+    <li class="list-item">
+    <%= link_to "#", :class => "link" do %>
+    <b>Tax & National Insurance</b>
+    <span class="icon-span"><i class="icon-warning-sign"></i></span>
+    <% end %>
+    </li>
+    
+    <li class="list-item">
+    <%= link_to "#", :class => "link" do %>
+    <b>Year End Accounts</b>
+    <span class="icon-span"><i class="icon-calendar"></i></span>
+    <% end %>
+    </li>
+    
+    <li class="list-item">
+    <%= link_to "#", :class => "link" do %>
+    <b>Graphs</b>
+    <span class="icon-span"><i class="icon-bar-chart"></i></span>
+    <% end %>
+    </li>
+    
+    <li class="list-item">
     <%= link_to '#', :class => "link" do %>
     <b>Settings</b>
     <span class="icon-span"><i class="icon-cogs"></i></span>
@@ -67,4 +98,7 @@
 </div>
 
 <div class="logout"><%= link_to "Sign out", signout_path, method: "delete" %></div>
+
+<% end %>
+
 </div>

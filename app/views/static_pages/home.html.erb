@@ -21,9 +21,16 @@
     <% end %>
     
     <li class="list-item">
-    <%= link_to new_client_path, :class => "link" do %>
+    <%= link_to pupils_path, :class => "link" do %>
     <b>Pupils</b>
     <span class="icon-span"><i class="icon-group"></i></span>
+    <% end %>
+    </li>
+    
+    <li class="list-item">
+    <%= link_to "#", :class => "link" do %>
+    <b>Startup Expenses</b>
+    <span class="icon-span"><i class="icon-credit-card"></i></span>
     <% end %>
     </li>
     
@@ -38,6 +45,34 @@
     <%= link_to "#", :class => "link" do %>
     <b>Office / Computer Equipment</b>
     <span class="icon-span"><i class="icon-print"></i></span>
+    <% end %>
+    </li>
+    
+    <li class="list-item">
+    <%= link_to "#", :class => "link" do %>
+    <b>PAYE / Other Income</b>
+    <span class="icon-span"><i class="icon-money"></i></span>
+    <% end %>
+    </li>
+    
+    <li class="list-item">
+    <%= link_to "#", :class => "link" do %>
+    <b>Tax & National Insurance</b>
+    <span class="icon-span"><i class="icon-warning-sign"></i></span>
+    <% end %>
+    </li>
+    
+    <li class="list-item">
+    <%= link_to "#", :class => "link" do %>
+    <b>Year End Accounts</b>
+    <span class="icon-span"><i class="icon-calendar"></i></span>
+    <% end %>
+    </li>
+    
+    <li class="list-item">
+    <%= link_to "#", :class => "link" do %>
+    <b>Graphs</b>
+    <span class="icon-span"><i class="icon-bar-chart"></i></span>
     <% end %>
     </li>
     
@@ -106,41 +141,32 @@
 
 </div>
 
-<% end %>
-
-
-<% if false %>
-
-<% if signed_in? %>
-  <div class="row-fluid">
-  <div class="span3" id="emptysidebar">
-  <div class="span2" id="sidebar">Date</div>
-  </div>
-  <div class="main custom span6">
-  <div class="header custom">
-  Income
-  </div>
-    <div class="form">
-    <%= render 'shared/income_form' %>
-    </div>
-    <div id="incomes">
-    <%= render 'shared/income_list' %>
-    </div>
-  </div>
-  <div class="main custom span6">
-  <div class="header custom">
-  Expenses
-  </div>
-    <div class="form">
-    <%= render 'shared/expense_form' %>
-    </div>
-    <div id="expenses">
-    <%= render 'shared/expense_list' %>
-    </div>  
-  </div>
-  </div>  
 <% else %>
-    <%= render 'users/newuserform' %>
-<% end %> 
+
+<div id="title-image"></div>
+
+<div id="login">
+
+<div id="login-form">
+
+<%= simple_form_for(:session, url: sessions_path, :html => { }) do |f| %>
+
+<%= f.input_field :email, placeholder: "Email", :class => "login" %>
+      
+<%= f.input_field :password, placeholder: "Password", :class => "login" %>
+
+<%= f.submit "Sign in to your Account", class: "submit add login" %>
 
 <% end %>
+
+<p><%= link_to "forgotten password?", new_password_reset_path, class: "" %></p>
+
+</div>
+
+</div>
+
+<%= render 'shared/sidebar' %>
+
+<% end %>
+
+
