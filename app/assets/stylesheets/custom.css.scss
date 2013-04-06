@@ -77,9 +77,10 @@ text-align: center;
     margin-right: 100px;
 }
 
-#login-form:after {
+.square {
 content: " ";
 background-color: rgba(255, 255, 255,0.95) !important;
+color: rgba(255,255,255,0.95);
 background: #c00;
 height: 20px;
 width: 20px;
