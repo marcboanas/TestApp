@@ -1,5 +1,5 @@
 $(function() {
 	$('#signin-text').click(function(){
-	$('#my-div').toggle('bounce',100);
+	$('#my-div').toggle('bounce',30);
 	});
 });
