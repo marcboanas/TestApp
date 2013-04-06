@@ -1,3 +1,12 @@
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+
+$(function() {
+	alert("boo");
+});
+
+</script>
+
 <% provide(:title, "Home") %>
 <% if signed_in? %>
 
@@ -145,7 +154,15 @@
 
 <div id="title-image"></div>
 
+<% if false %>
+
 <div id="login">
+
+<div class="logo margin-left">Sign in to your account</div>
+
+<div id="badge">AH</div>
+
+<% end %>
 
 <div id="login-form">
 
@@ -159,13 +176,57 @@
 
 <% end %>
 
-<p><%= link_to "forgotten password?", new_password_reset_path, class: "" %></p>
+<%= link_to "forgotten password?", new_password_reset_path, class: "forgotten-password" %>
 
 </div>
 
 </div>
+
+<% if false %>
+
+<div id="register"><div class="logo margin-left">New to Account Hero?</div>
+
+<div class="logo margin-left down">Sign up</div>
+
+<div id="badge">AH</div>
+
+<div id="register-form" class="long">
+
+<%= render 'users/newuserform' %>
+
+</div>
+
+</div>
+
+<% end %>
 
 <%= render 'shared/sidebar' %>
+
+<div class="navbar">
+
+<div id="signin-text">Sign In <i class="icon-chevron-down"></i></div>
+
+</div>
+
+<div id="explanation">
+
+<div class="text-frame">
+
+<div class="text-welcome">Welcome to Account Hero. A <u>simple accounting solution</u> for self-employed driving instructors.
+
+<div class="circle"><i class="icon-arrow-down"></i></div>
+
+</div>
+
+</div>
+
+<div class="picture-frame">
+
+<div class="account-info basic"></div>
+
+</div>
+
+</div>
 
 <% end %>
 

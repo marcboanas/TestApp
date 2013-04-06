@@ -14,10 +14,10 @@ overflow-y: auto;
 
 #title-image {
 background: white url('/images/accounthero_.jpg') no-repeat 250px 0px fixed;
--webkit-background-size: 1280px 990px;
--moz-background-size: 1280px 990px;
--o-background-size: 1280px 990px;
-background-size: 1280px 990px;
+-webkit-background-size: 1280px 900px;
+-moz-background-size: 1280px 900px;
+-o-background-size: 1280px 900px;
+background-size: 1280px 900px;
 position: fixed;
 top: 0px;
 bottom: 0px;
@@ -32,85 +32,171 @@ box-shadow: rgb(203, 203, 203) 3px 3px 3px 0px;
 
 #login {
 position: fixed;
-top: -5px;
+top: 60px;
 left: 1000px;
 width: 300px;
 height: 200px;
 background: rgba(255,255,255,0.9);
-border-radius: 0 0 5px 5px;
+border-radius: 5px 5px 5px 5px;
 border: 1px solid #afafaf;
 -webkit-box-shadow: rgb(203, 203, 203) 3px 3px 3px 0px;
 box-shadow: rgb(203, 203, 203) 3px 3px 3px 0px;
+z-index: 100000;
 }
 
-#login-form {
--webkit-backface-visibility: hidden;
--webkit-background-clip: border-box;
--webkit-background-origin: padding-box;
--webkit-background-size: auto;
+#login-form, #register-form {
 -webkit-box-shadow: rgba(0, 0, 0, 0.65098) 0px 1px 6px 0px, rgba(255, 255, 255, 0.631373) 0px 1px 2px 0px inset, rgba(0, 0, 0, 0.129412) 0px 0px 5px 0px inset;
--webkit-transform: matrix(1, 0, 0, 1, 0, 0);
--webkit-transition-delay: 0s;
--webkit-transition-duration: 0.8s;
--webkit-transition-property: all;
--webkit-transition-timing-function: ease-in-out;
--webkit-user-select: none;
-background-attachment: scroll;
-background-clip: border-box;
-background-color: rgb(232, 228, 227);
-background-image: url(https://wunderlist2.s3.amazonaws.com/c1296faeecc815bb0b0924a299b730f03e82c789/images/textures/login.png);
-background-origin: padding-box;
-background-size: auto;
+background-color: rgba(255, 255, 255,0.95) !important;
 border-radius: 6px;
 box-shadow: rgba(0, 0, 0, 0.65098) 0px 1px 6px 0px, rgba(255, 255, 255, 0.631373) 0px 1px 2px 0px inset, rgba(0, 0, 0, 0.129412) 0px 0px 5px 0px inset;
 color: rgb(111, 111, 111);
+background-image: none !important;
 display: block;
 font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 font-size: 13px;
 font-weight: 500;
 height: 120px;
-left: 10px;
+left: 1200px;
 margin: 0px;
 padding: 10px;
-position: absolute;
+position: fixed;
 text-decoration: none;
 top: 50px;
-transition-delay: 0s;
-transition-duration: 0.8s;
-transition-property: all;
-transition-timing-function: ease-in-out;
-visibility: visible;
 width: 260px;
 z-index: 900;
+text-align: center;
+display: none;
+    &.long {
+    height: auto;
+    top: 60px;
+    }
+}
+
+a.forgotten-password {
+text-decoration: none;
+color: rgb(66, 62, 62);
+font-size: 11px;
 }
 
 #badge {
-   width: 280px;
-   height: 50px;
+   width: 40px;
+   height: 40px;
    position: absolute;
-   top: 10px;
-   left: 10px;
+   top: 0px;
+   left: 230px;
    background: red;
-   /* IE10 Consumer Preview */ 
-background-image: -ms-radial-gradient(center, circle farthest-corner, #FF0000 0%, #F56545 100%);
-
-/* Mozilla Firefox */ 
-background-image: -moz-radial-gradient(center, circle farthest-corner, #FF0000 0%, #F56545 100%);
-
-/* Opera */ 
-background-image: -o-radial-gradient(center, circle farthest-corner, #FF0000 0%, #F56545 100%);
-
-/* Webkit (Safari/Chrome 10) */ 
-background-image: -webkit-gradient(radial, center center, 0, center center, 497, color-stop(0, #FF0000), color-stop(1, #F56545));
-
-/* Webkit (Chrome 11+) */ 
-background-image: -webkit-radial-gradient(center, circle farthest-corner, #FF0000 0%, #F56545 100%);
-
-/* W3C Markup, IE10 Release Preview */ 
-background-image: radial-gradient(circle farthest-corner at center, #FF0000 0%, #F56545 100%);
-   -webkit-box-shadow: 0 16px 10px -17px rgba(0,0,0,0.5);
+   -webkit-box-shadow: rgba(0, 0, 0, 0.65098) 0px 1px 6px 0px, rgba(255, 255, 255, 0.631373) 0px 1px 2px 0px inset, rgba(0, 0, 0, 0.129412) 0px 0px 5px 0px inset;
+   box-shadow: rgba(0, 0, 0, 0.65098) 0px 1px 6px 0px, rgba(255, 255, 255, 0.631373) 0px 1px 2px 0px inset, rgba(0, 0, 0, 0.129412) 0px 0px 5px 0px inset;
+   text-shadow: rgb(0, 0, 0) 0px 1px 0px;
+   color: white;
+   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+   font-size: 15px;
+   font-weight: 500;
+   line-height: 40px;
+   text-align: center;
+   letter-spacing: 3px;
 }
 
+#signin-text {
+font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+color: rgb(66, 62, 62);
+font-size: 13px;
+font-weight: bold;
+text-align: right;
+line-height: 40px;
+margin-right: 100px;
+cursor: pointer;
+text-shadow: rgb(255, 255, 255) 0px 1px 0px;
+}
+
+#register {
+
+color: rgb(66, 62, 62);
+background: rgba(255,255,255,0.9);
+font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+font-size: 13px;
+font-weight: 500;
+position: fixed;
+top: 220px;
+left: 1000px;
+width: 300px;
+height: 270px;
+border-radius: 5px 5px 5px 5px;
+border: 1px solid #afafaf;
+-webkit-box-shadow: rgb(203, 203, 203) 3px 3px 3px 0px;
+box-shadow: rgb(203, 203, 203) 3px 3px 3px 0px;
+}
+
+#explanation {
+position: absolute;
+top: 800px;
+left: 270px;
+width: 1258px;
+height: 560px;
+background: white;
+z-index: 1000;
+border: 1px solid #afafaf;
+border-radius: 5px 5px 0 0;
+}
+
+.text-frame {
+background: none;
+width: 100%;
+height: 60px;
+position: relative;
+}
+
+.circle {
+border-radius: 50% 50%;
+height: 60px;
+width: 60px;
+position: absolute;
+top: -30px;
+left: 1100px;
+background: white;
+border: 1px solid #afafaf;
+line-height: 60px;
+text-align: center;
+}
+
+i.icon-arrow-down {
+font-size: 36px !important;
+}
+
+.text-welcome {
+color: rgb(66, 62, 62);
+font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+font-size: 36pxpx;
+font-weight: 500;
+line-height: 60px;
+text-align: center;
+}
+
+.picture-frame {
+background: #2a2a2a;
+width: 100%;
+height: 600px;
+border-top: 1px solid #afafaf;
+border-bottom: 1px solid #afafaf;
+position: relative;
+}
+
+.account-info {
+width: 282px;
+height: 352px;
+position: absolute;
+border: 1px solid #afafaf;
+border-radius: 4px;
+background: white;
+    &.basic {
+    top: 124px;
+    left: 103px;
+    }
+    &.premium {
+    top: 124px;
+    left: 488px;
+    }
+}
 
 i {
 font-size: 14px !important;
@@ -171,6 +257,12 @@ text-align: left;
 text-shadow: rgb(255, 255, 255) 0px 1px 0px;
 width: 100%;
 text-decoration: none;
+    &.margin-left {
+    margin-left: 10px;
+    }
+    &.down {
+    margin-top: -20px;
+    }
 }
 
 a.decoration-none {
@@ -960,7 +1052,7 @@ width: 500px !important;
 }
 
 .navbar {
-background: rgba(181,197,197,0.6);
+background: rgba(255,255,255,0.95);
 width: 1260px !important;
 height: 40px;
 position: fixed;
