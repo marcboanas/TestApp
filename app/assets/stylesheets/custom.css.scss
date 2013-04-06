@@ -78,13 +78,11 @@ text-align: center;
 }
 
 .square {
-content: " ";
-background-color: rgba(255, 255, 255,0.95) !important;
+background-color: rgba(255, 0, 0,0.95) !important;
 color: rgba(255,255,255,0.95);
 background: #c00;
 height: 20px;
 width: 20px;
-z-index: 600;
 position: absolute;
 top: -10px;
 right: 30px;
