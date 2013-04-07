@@ -112,7 +112,7 @@ font-size: 11px;
    box-shadow: rgba(0, 0, 0, 0.65098) 0px 1px 6px 0px, rgba(255, 255, 255, 0.631373) 0px 1px 2px 0px inset, rgba(0, 0, 0, 0.129412) 0px 0px 5px 0px inset;
    text-shadow: rgb(0, 0, 0) 0px 1px 0px;
    color: white;
-   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+   font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
    font-size: 15px;
    font-weight: 500;
    line-height: 40px;
@@ -151,9 +151,6 @@ box-shadow: rgb(203, 203, 203) 3px 3px 3px 0px;
 }
 
 #explanation {
-position: absolute;
-top: 800px;
-left: 270px;
 width: 1258px;
 height: 452px;
 background: white;
@@ -189,7 +186,6 @@ font-size: 36px !important;
 .text-welcome {
 color: rgb(66, 62, 62);
 font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
-font-size: 36pxpx;
 font-weight: 500;
 line-height: 60px;
 text-align: center;
@@ -198,7 +194,7 @@ text-align: center;
 .picture-frame {
 background: #2a2a2a;
 width: 100%;
-height: 452px;
+height: 762px;
 border-top: 1px solid #afafaf;
 border-bottom: 1px solid #afafaf;
 position: relative;
@@ -206,7 +202,7 @@ position: relative;
 
 .account-info {
 width: 282px;
-height: 352px;
+height: 652px;
 position: absolute;
 border: 1px solid #afafaf;
 border-radius: 4px;
@@ -219,10 +215,55 @@ background: white;
     top: 50px;
     left: 488px;
     }
+    &.premium-one {
+    top: 50px;
+    left: 873px;
+    }
+}
+
+.button {
+position: absolute;
+bottom: 30px;
+left: 90px;
+-webkit-box-shadow: rgba(0, 0, 0, 0.65098) 0px 1px 6px 0px, rgba(255, 255, 255, 0.631373) 0px 1px 2px 0px inset, rgba(0, 0, 0, 0.129412) 0px 0px 5px 0px inset;
+box-shadow: rgba(0, 0, 0, 0.65098) 0px 1px 6px 0px, rgba(255, 255, 255, 0.631373) 0px 1px 2px 0px inset, rgba(0, 0, 0, 0.129412) 0px 0px 5px 0px inset;
+text-shadow: rgb(0, 0, 0) 0px 1px 0px;
+color: white;
+font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+font-size: 15px;
+font-weight: 500;
+line-height: 40px;
+text-align: center;
+width: 100px;
+    &.active {
+    background: red;
+    cursor: pointer;
+    }
+    &.disabled {
+    background: #CCC;
+    color: rgb(66, 62, 62);
+    }
 }
 
 i {
 font-size: 14px !important;
+}
+
+h1, h2 {
+color: rgb(66, 62, 62);
+font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+font-size: 15px;
+font-weight: 500;
+line-height: 60px;
+text-align: center;
+}
+
+h2 {
+margin-top: -30px;
+}
+
+h1 {
+font-weight: bold;
 }
 
 .container {
@@ -1081,7 +1122,7 @@ height: 40px;
 position: fixed;
 top: 0px;
 left: 270px;
-z-index: 1000;
+z-index: 100000;
 }
 
 .datebox, .titlebox {
