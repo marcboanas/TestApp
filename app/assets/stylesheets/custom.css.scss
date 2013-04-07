@@ -46,7 +46,7 @@ z-index: 1000;
 box-shadow: 0 0 3px 3px rgb(203, 203, 203);
 }
 
-input[type=text], .submit, a, .font {
+body, input, button, select, option, textarea, a, .font {
 font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
 color: rgb(66, 62, 62);
 font-size: 13px;
@@ -54,6 +54,18 @@ font-weight: 500;
     &.shadow {
     text-shadow: rgb(255, 255, 255) 0px 1px 0px;
     }
+}
+
+body {
+    font-size: 13px;
+}
+input, button, select, option, textarea {
+    font-size: 100%;
+}
+
+.submit.login {
+    font-size: 500px !important;
+    height: 400px;
 }
 
 .logo {
