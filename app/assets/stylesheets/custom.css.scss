@@ -6,8 +6,6 @@ background: url('/images/wood.jpg') no-repeat 250px 0px fixed;
 -moz-background-size: 1280px 980px;
 -o-background-size: 1280px 980px;
 background-size: 1280px 980px;
-width: 1920px;
-height: 980px;
 overflow-x: auto;
 overflow-y: auto;
 }
@@ -157,6 +155,9 @@ background: white;
 z-index: 1000;
 border: 1px solid #afafaf;
 border-radius: 5px 5px 0 0;
+position: absolute;
+top: 800px;
+left: 270px;
 }
 
 .text-frame {
