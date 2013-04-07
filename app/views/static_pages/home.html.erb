@@ -1,12 +1,44 @@
 <% provide(:title, "Home") %>
 
-<div class="image-container box-border"></div>
-
 <div class="navbar-top">
 
 <div class="logo font shadow">Account Hero</div>
 
 <div id="badge" class="font shadow">AH</div>
+
+<div id="signin-text" class="font pointer">Sign In <i class="icon-chevron-down"></i></div>
+
+</div>
+
+<div id="my-div"><div class="square"></div>
+
+<div id="login-form" class="font">
+
+<%= simple_form_for(:session, url: sessions_path, :html => { }) do |f| %>
+
+<%= f.input_field :email, placeholder: "Email", :class => "" %>
+      
+<%= f.input_field :password, placeholder: "Password", :class => "" %>
+
+<%= f.submit "Sign in to your Account", class: "submit" %>
+
+<% end %>
+
+<%= link_to "forgotten password?", new_password_reset_path, class: "forgotten-password" %>
+
+</div>
+
+</div>
+
+<div class="image-container box-border"></div>
+
+<div id="main-content">
+
+<div class="main-header font">Welcome to Account Hero. A <u>simple accounting solution</u> for self-employed driving instructors.
+
+<div class="circle pointer"><i class="icon-arrow-down"></i></div>
+
+</div>
 
 </div>
 
@@ -211,23 +243,7 @@
 
 <div id="signin-text">Sign In <i class="icon-chevron-down"></i></div>
 
-<div id="my-div"><div class="square"></div>
 
-<div id="login-form">
-
-<%= simple_form_for(:session, url: sessions_path, :html => { }) do |f| %>
-
-<%= f.input_field :email, placeholder: "Email", :class => "login" %>
-      
-<%= f.input_field :password, placeholder: "Password", :class => "login" %>
-
-<%= f.submit "Sign in to your Account", class: "submit add login" %>
-
-<% end %>
-
-<%= link_to "forgotten password?", new_password_reset_path, class: "forgotten-password" %>
-
-</div>
 
 </div>
 

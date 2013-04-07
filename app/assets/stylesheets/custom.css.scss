@@ -5,6 +5,14 @@ width: 1024px;
 height: 1024px;
 }
 
+.right {
+float: right;
+}
+
+.in-line {
+display: in-line;
+}
+
 .image-container {
 margin: 0px;
 background: black url('/images/accounthero_.jpg') no-repeat;
@@ -14,7 +22,7 @@ background: black url('/images/accounthero_.jpg') no-repeat;
 background-size: 1024px 800px;
 margin: 0px auto;
 width: 1018px;
-height: 800px;
+height: 1000px;
 position: fixed;
 top: 0px;
 border: 1px solid #afafaf;
@@ -29,6 +37,7 @@ height: 40px;
 line-height: 40px;
 border: 1px solid #afafaf;
 padding: 0px 10px 0 10px;
+z-index: 1000;
 }
 
 .box-border {
@@ -37,7 +46,7 @@ padding: 0px 10px 0 10px;
 box-shadow: 0 0 3px 3px rgb(203, 203, 203);
 }
 
-.font {
+input[type=text], .submit, a, .font {
 font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
 color: rgb(66, 62, 62);
 font-size: 13px;
@@ -67,3 +76,90 @@ line-height: 40px;
 text-align: center;
 letter-spacing: 3px;
 }
+
+#signin-text {
+position: absolute;
+top: 0px;
+left: 900px;
+}
+
+#main-content {
+position: absolute;
+top: 700px;
+margin: 0px auto;
+width: 1018px;
+height: 1024px;
+background: red;
+border: 1px solid #afafaf;
+border-radius: 5px 5px 0px 0px;
+}
+
+.main-header {
+background: white;
+height: 60px;
+width: 100%;
+line-height: 60px;
+text-align: center;
+font-weight: 20px;
+}
+
+.circle {
+border-radius: 50% 50%;
+height: 40px;
+width: 40px;
+position: absolute;
+top: -20px;
+left: 900px;
+background: white;
+border: 1px solid #afafaf;
+line-height: 40px;
+text-align: center;
+}
+
+.pointer {
+cursor: pointer;
+}
+
+#login-form, #register-form {
+background-color: rgba(255, 255, 255, 1);
+border-radius: 6px;
+height: auto;
+padding: 10px;
+text-decoration: none;
+border: 2px solid #afafaf;
+width: 260px;
+text-align: center;
+line-height: 30px;
+}
+
+
+#my-div {
+    width:260px;
+    height: auto;
+    display: block;
+    background:none;
+    margin-top: 60px;
+    float: right;
+    margin-right: 50px;
+    position: relative;
+    z-index: 100000;
+}
+
+.square {
+background-color: rgba(255, 255, 255,0.95) !important;
+color: rgba(255,255,255,0.95);
+background: #c00;
+height: 20px;
+width: 20px;
+position: absolute;
+top: -10px;
+right: 30px;
+-moz-transform:rotate(45deg);
+-webkit-transform:rotate(45deg);
+-o-transform:rotate(45deg);
+-ms-transform:rotate(45deg);
+border-top: 1px solid #afafaf;
+border-left: 1px solid #afafaf;
+}
+
+
