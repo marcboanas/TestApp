@@ -21,6 +21,18 @@
 //= require jquery.tablescroll
 //= require_tree .
 
+$(function() {
+	$('#signin-text').click(function(){
+	$('#my-div').toggle('bounce', { times:2 } ,300);
+	});
+});
+
+$(function() {
+	$('#accounts').click(function(){
+	$(this).hide();
+	});
+});
+
 jQuery(function($){
        $.datepicker.setDefaults({ dateFormat: 'yymmdd' });
        });

@@ -1,37 +1,97 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
-    <div class="container" id="header-nav">
-      <nav>
-      
-      
-      
-              <ul class="nav pull-left navigation">
-          <% if signed_in? %>
-            <li><%= link_to "Home", root_path %></li>
-          <% else %>
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Pricing", root_path %></li>
-            <li class="yellow"><%= link_to "Start your Free Trail", root_path %></li>
+    <div class="navbar-top">
 
-          <% end %>
-        </ul>
+        <div class="logo font shadow">Account Hero</div>
+
+        <div id="badge" class="font shadow">AH</div>
         
+    <% if !signed_in? %>
+
+        <div id="signin-text" class="font pointer">Sign In <i class="icon-chevron-down"></i></div>
         
-        
-        
-        <ul class="nav pull-right navigation">
-          <% if signed_in? %>
-            <li><%= link_to "Users", users_path %></li>
-            <li id="fat-menu" class="dropdown">
-            <li><%= link_to "Profile", current_user %></li>
-            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-            <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
-            </li>
-          <% else %>
-            <li><%= link_to "Sign in", signin_path %></li>
-          <% end %>
-        </ul>
-      </nav>
+    <% else %>
+    
+    <div id="signout-text" class="font"><%= link_to current_user.name.titleize, root_path %> | <%= link_to "Sign out", signout_path, method: "delete" %></div>
+    
+    <% end %>
+
     </div>
+
+    <div id="my-div"><div class="square"></div>
+
+        <div id="login-form" class="font">
+
+        <%= simple_form_for(:session, url: sessions_path, :html => { }) do |f| %>
+
+        <%= f.input_field :email, placeholder: "Email", :class => "" %>
+      
+        <%= f.input_field :password, placeholder: "Password", :class => "" %>
+
+        <%= f.submit "Sign in to your Account", :class => "login" %>
+
+        <% end %>
+
+        <%= link_to "forgotten password?", new_password_reset_path, class: "forgotten-password" %>
+
+    </div>
+    
   </div>
+  
+  <% if signed_in? %>
+  
+  <div id="account-navbar">
+  
+  <div class="menu-item shadow" id="accounts"><b><i class="icon-calendar"></i> Accounts</b></div>
+  
+  <div class="menu-item shadow" id="reports"><b><i class="icon-bar-chart"></i> Reports</b></div>
+   
+  <div class="menu-item shadow" id="hmrc"><b><i class="icon-briefcase"></i> HMRC</b></div>
+  
+  <div class="menu-item shadow" id="settings"><b><i class="icon-cogs"></i> Settings</b></div>
+  
+  </div>
+  
+  <div id="account-menu">
+  
+  
+    <div class="menu-list" id="accounts-menu">
+  
+    <% @dates = (Date.today..(Date.today + 1.year)).to_a %>
+    <% @date_months = @dates.map {|d| Date.new(d.year, d.month, 1) }.uniq %>
+    <% @date_months.each do |month| %>
+    
+    <div class="menu-list-item">
+    
+    <%= link_to root_path + "?date=" + month.strftime('%Y%m%d'), :class => "item", :id => (month + 1.month).strftime('%Y%m%d') do %>
+    
+    <%= month.strftime("%B %Y") %>
+    
+    <% end %>
+    
+    </div>
+    
+    <% end %>
+  
+  </div>
+  
+  <div class="menu-list" id="reports-menu">
+  
+  
+  </div>
+  
+  <div class="menu-list" id="hmrc-menu"> 
+
+
+  </div>
+  
+  <div class="menu-list" id="settings-menu">
+  
+  <div class="menu-list-item">Profile</div>
+  
+  </div>
+  
+  </div>
+  
+  <% end %>
+  
 </header>
