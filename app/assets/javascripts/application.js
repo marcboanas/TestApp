@@ -30,7 +30,7 @@ $(function() {
 $(function() {
 	$('.menu-item').click(function(){
 	var item = $(this).attr("id");
-	$("#" + item + "-menu").toggle();
+	$("#" + item + "-menu").css('height', 'auto');
 	});
 });
 

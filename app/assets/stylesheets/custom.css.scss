@@ -83,7 +83,8 @@ z-index: 10000;
 .menu-list {
 width: 253px;
 background: none;
-min-height: 5px;
+height: 1px;
+overflow: hidden;
 border-right: 0px solid #afafaf;
 float: left;
 line-height: 40px;
@@ -91,7 +92,6 @@ text-align: center;
 cursor: pointer;
 margin-left: 1px;
 padding: 0px;
-display: none;
 }
 
 .menu-list:first-child {
