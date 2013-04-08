@@ -35,7 +35,7 @@ $(function() {
 	$("#" + item + "-menu").css('height', 'auto');
 	var autoheight = $("#" + item + "-menu").height();
 	$("#" + item + "-menu").css('height', '1px');
-	$("#" + item + "-menu").animate({ height: autoheight}, 1000);
+	$("#" + item + "-menu").animate({ height: autoheight}, 300);
 	},
 	function() {
 	var item = $(this).attr("id");
