@@ -29,6 +29,7 @@ $(function() {
 
 $(function() {
 	$('.menu-item').hover(function(){
+	$('.menu-list').css('height', '1px');
 	var item = $(this).attr("id");
 	$("#" + item + "-menu").css('height', 'auto');
 	var autoheight = $("#" + item + "-menu").height();
