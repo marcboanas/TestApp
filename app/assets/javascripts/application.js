@@ -29,10 +29,11 @@ $(function() {
 
 $(function() {
 	$('.menu-item').hover(function(){
-	$item = $(this).attr("id");
+	var item = $(this).attr("id");
 	$("#" + item + "-menu").css('height', 'auto');
 	},
 	function() {
+	var item = $(this).attr("id");
 	$("#" + item + "-menu").css('height', '1px');
 	});
 });
