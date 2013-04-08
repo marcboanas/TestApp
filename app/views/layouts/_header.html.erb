@@ -11,7 +11,7 @@
         
     <% else %>
     
-    <div id="signout-text" class="font"><%= link_to current_user.name.titleize, root_path %> | <%= link_to "Sign out", signout_path, method: "delete" %></div>
+    <div id="signout-text" class="font"><b><i class="icon-cogs"></i> Settings</b> | <b><%= link_to current_user.name.titleize, root_path %></b> | <%= link_to "Sign out", signout_path, method: "delete" %></div>
     
     <% end %>
 
@@ -43,11 +43,11 @@
   
   <div class="menu-item shadow" id="accounts"><b><i class="icon-calendar"></i> Accounts</b></div>
   
+  <div class="menu-item shadow" id="pupils"><b><i class="icon-group"></i> Pupils</b></div>
+  
   <div class="menu-item shadow" id="reports"><b><i class="icon-bar-chart"></i> Reports</b></div>
    
   <div class="menu-item shadow" id="hmrc"><b><i class="icon-briefcase"></i> HMRC</b></div>
-  
-  <div class="menu-item shadow" id="settings"><b><i class="icon-cogs"></i> Settings</b></div>
   
   </div>
   
@@ -74,6 +74,12 @@
   
   </div>
   
+  <div class="menu-list" id="pupils-menu">
+  
+  <div class="menu-list-item">Add New Pupils</div>
+  
+  </div>
+  
   <div class="menu-list" id="reports-menu">
   
   <div class="menu-list-item">Year End Accounts</div>
@@ -84,12 +90,6 @@
 
   <div class="menu-list-item">Self Emplyed Income Tax</div>
 
-  </div>
-  
-  <div class="menu-list" id="settings-menu">
-  
-  <div class="menu-list-item">Profile</div>
-  
   </div>
   
   </div>

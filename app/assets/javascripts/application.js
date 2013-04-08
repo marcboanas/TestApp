@@ -43,6 +43,13 @@ $(function() {
 	function() {
 	$(this).css('height', '1px');
 	});
+	
+	$('.menu-list-item').hover(function(){
+	$(this).css('background', 'black');
+	},
+	function() {
+	$(this).css('background', 'white');
+	});
 });
 
 jQuery(function($){

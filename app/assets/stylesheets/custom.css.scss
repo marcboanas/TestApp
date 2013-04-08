@@ -184,6 +184,7 @@ width: 170px;
 input[type=submit] {
 -webkit-box-shadow: rgba(1, 33, 57, 0.298039) 0px 1px 1px 0px;
 -webkit-font-smoothing: antialiased;
+background: rgb(77, 144, 254);
 background-image: linear-gradient(rgb(77, 144, 254), rgb(71, 135, 237));
 border: rgb(89, 130, 38) 1px solid;
 border-radius: 3px;
@@ -267,6 +268,7 @@ cursor: pointer;
 }
 
 #login-form, #register-form {
+background: #f5f6f8;
 background-image: linear-gradient(#f5f6f8, #e8eaf0);
 border-radius: 4px;
 height: auto;
