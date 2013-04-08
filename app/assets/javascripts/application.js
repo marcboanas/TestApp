@@ -28,8 +28,9 @@ $(function() {
 });
 
 $(function() {
-	$('#accounts').click(function(){
-	$(this).hide();
+	$('.menu-item').click(function(){
+	var item = $(this).attr("id");
+	$("#" + item + "-menu").toggle();
 	});
 });
 
