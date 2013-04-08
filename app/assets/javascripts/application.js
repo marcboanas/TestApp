@@ -29,15 +29,17 @@ $(function() {
 
 $(function() {
 	$('.menu-item').hover(function(){
+	$('.menu-list').stop();	
 	$('.menu-list').css('height', '1px');
 	var item = $(this).attr("id");
 	$("#" + item + "-menu").css('height', 'auto');
 	var autoheight = $("#" + item + "-menu").height();
 	$("#" + item + "-menu").css('height', '1px');
-	$("#" + item + "-menu").slideDown();
+	$("#" + item + "-menu").animate({ height: autoheight}, 1000);
 	},
 	function() {
 	var item = $(this).attr("id");
+	$("#" + item + "-menu").stop();
 	$("#" + item + "-menu").css('height', '1px');
 	});
 	
