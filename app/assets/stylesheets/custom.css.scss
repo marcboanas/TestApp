@@ -83,6 +83,7 @@ z-index: 10000;
 .menu-list {
 width: 253px;
 background: none;
+min-height: 1px;
 height: 1px;
 overflow: hidden;
 border-right: 0px solid #afafaf;
@@ -99,7 +100,7 @@ margin-left: 0px;
 }
 
 .menu-list:last-child {
-width: 256px;
+width: 257px;
 border-right: 0px solid #afafaf;
 }
 
