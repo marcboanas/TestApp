@@ -82,9 +82,9 @@ z-index: 10000;
 
 .menu-list {
 width: 253px;
-background: none;
-height: 1px;
-overflow: hidden;
+background: black;
+min-height: 1px;
+max-height: 500px;
 border-right: 0px solid #afafaf;
 float: left;
 line-height: 40px;
@@ -99,7 +99,7 @@ margin-left: 0px;
 }
 
 .menu-list:last-child {
-width: 257px;
+width: 256px;
 border-right: 0px solid #afafaf;
 }
 

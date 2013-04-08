@@ -36,6 +36,13 @@ $(function() {
 	var item = $(this).attr("id");
 	$("#" + item + "-menu").css('height', '1px');
 	});
+	
+	$('.menu-list').hover(function(){
+	$(this).css('height', 'auto');
+	},
+	function() {
+	$(this).css('height', '1px');
+	});
 });
 
 jQuery(function($){
