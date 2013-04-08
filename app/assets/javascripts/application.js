@@ -30,7 +30,7 @@ $(function() {
 $(function() {
 	$('.menu-item').click(function(){
 	var item = $(this).attr("id");
-	$("#" + item + "-menu").css('height', 'auto');
+	$("#" + item + "-menu").css('min-height', '1px');
 	});
 });
 
