@@ -73,7 +73,7 @@ position: fixed;
 top: 82px;
 margin: 0px auto;
 background: rgba(255,255,255,0);
-width: 1018px;
+width: 1019px;
 height: auto;
 line-height: 40px;
 padding: 0px 0px 0 0px;
@@ -85,12 +85,12 @@ width: 253px;
 background: black;
 height: 1px;
 overflow: hidden;
-border-right: 0px solid #afafaf;
+border-right: 1px solid #afafaf;
 float: left;
 line-height: 40px;
 text-align: center;
 cursor: pointer;
-margin-left: 1px;
+margin-left: 0px;
 padding: 0px;
 }
 
@@ -99,8 +99,10 @@ margin-left: 0px;
 }
 
 .menu-list:last-child {
-width: 256px;
+width: 257px;
 border-right: 0px solid #afafaf;
+-webkit-box-shadow: 3px 0px 5px -2px #afafaf;
+box-shadow: 3px 0px 5px -2px #afafaf;
 }
 
 .menu-list-item {
