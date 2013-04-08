@@ -28,9 +28,12 @@ $(function() {
 });
 
 $(function() {
-	$('.menu-item').click(function(){
+	$('.menu-item').hover(function(){
 	var item = $(this).attr("id");
-	$("#" + item + "-menu").css('min-height', '1px');
+	$("#" + item + "-menu").css('height', 'auto');
+	},
+	function() {
+	$("#" + item + "-menu").css('height', '1px');
 	});
 });
 
