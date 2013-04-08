@@ -30,7 +30,7 @@ $(function() {
 $(function() {
 	$('.menu-item').hover(function(){
 	var item = $(this).attr("id");
-	$("#" + item + "-menu").animate({ height: 'auto'}, 1000);
+	$("#" + item + "-menu").animate({ height: '700px'}, 1000);
 	},
 	function() {
 	var item = $(this).attr("id");
