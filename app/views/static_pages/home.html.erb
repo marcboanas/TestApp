@@ -1,6 +1,6 @@
 <% provide(:title, "Home") %>
 
-
+<% if !signed_in? %>
 
 <div class="image-container box-border"></div>
 
@@ -14,8 +14,7 @@
 
 </div>
 
-
-
+<% end %>
 
 
 

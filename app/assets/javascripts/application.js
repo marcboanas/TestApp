@@ -51,7 +51,7 @@ $(function() {
 	});
 	
 	$('.menu-list-item').hover(function(){
-	$(this).css('background', 'rgb(77, 144, 254)');
+	$(this).css('background', '#edeff4');
 	},
 	function() {
 	$(this).css('background', 'white');
