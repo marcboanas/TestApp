@@ -59,7 +59,7 @@ $(function() {
 });
 
 $(function() {
-  $('.date').datepicker();
+  $('#date').datepicker();
 });
 
 $(function() {
