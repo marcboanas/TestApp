@@ -29,6 +29,10 @@ $(function() {
 });
 
 $(function() {
+  $('input.date_picker').datepicker();
+});
+
+$(function() {
 	$('.menu-item').hover(function(){
 	$('.menu-list').stop();	
 	$('.menu-list').css('height', '1px');
