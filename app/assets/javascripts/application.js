@@ -19,6 +19,7 @@
 //= require dataTables/jquery.dataTables
 //= require best_in_place
 //= require jquery.tablescroll
+//= require jquery.ui.datepicker
 //= require_tree .
 
 $(function() {
