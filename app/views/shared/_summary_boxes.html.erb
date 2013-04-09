@@ -1,3 +1,65 @@
+<div id="info-box-top">
+
+<div class="info-box-item shadow">
+
+Date</br>
+
+<b>April 2013 - April 2014</b>
+
+</div>
+
+<div class="info-box-item shadow">
+
+Income</br>
+
+<% if !@incomes.empty? %>
+<b><%= number_to_currency(@incomes.map(&:amount).inject(:+), :unit => "£") %></b>
+<% else %>
+<b><%= '£0.00' %></b>
+<% end %>
+
+</div>
+
+<div class="info-box-item shadow">
+
+Expenses</br>
+
+<% if !@expenses.empty? %>
+<% @totalexpense = @expenses.map(&:amount) %>
+<% @total = [] %>
+<% @totalexpense.each do |e| %>
+<% if e %>
+<% @total.push(e) %>
+<% end %>
+<% end %>
+<b><%= number_to_currency(@total.sum, :unit => "£") %></b>
+<% else %>
+<b><%= '£0.00' %></b>
+<% end %>
+
+
+</div>
+
+<div class="info-box-item shadow">
+
+Profit</br>
+
+<% if !@incomes.empty? && !@expenses.empty? %>
+<b><%= number_to_currency(@incomes.map(&:amount).inject(:+) - @total.sum, :unit => "£") %></b>
+<% elsif @incomes.empty? && !@expenses.empty? %>
+<b><%= number_to_currency(- @total.sum, :unit => "£") %></b>
+<% elsif !@incomes.empty? %>
+<b><%= number_to_currency(@incomes.map(&:amount).inject(:+), :unit => "£") %></b>
+<% else %>
+<b><%= '£0.00' %></b>
+<% end %>
+
+</div>
+
+</div>
+
+<% if false %>
+
 <div class="summary-box first income">
 <div class="summary-tag income"></div>
 Income</br>
@@ -54,3 +116,5 @@ Hours Worked <br>
 <% end %>
 </div>
 </div>
+
+<% end %>

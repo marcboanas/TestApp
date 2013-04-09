@@ -9,8 +9,8 @@ height: 1024px;
 float: right;
 }
 
-.in-line {
-display: in-line;
+.inline {
+display: inline-block;
 }
 
 .image-container {
@@ -142,6 +142,38 @@ border-top: 1px solid #afafaf;
 border-bottom: 1px solid #afafaf;
 }
 
+#info-box-top {
+position: fixed;
+top: 82px;
+margin: 0px auto;
+width: 1018px;
+border: 1px solid #afafaf;
+height: 80px;
+background: #eef1f8;
+box-shadow: 0 4px 2px -2px gray;
+-webkit-box-shadow: 0 4px 2px -2px gray;
+z-index: 100;
+}
+
+.info-box-item {
+float: left;
+width: 25%;
+height: 100%;
+line-height: 40px;
+font-size: 13px;
+text-align: center;
+}
+
+#main-frame {
+position: absolute;
+margin: 0px auto;
+width: 1000px;
+height: auto;
+top: 175px;
+padding: 10px;
+background: red;
+}
+
 .box-border {
 -moz-box-shadow: 0 0 3px 3px rgb(203, 203, 203);
 -webkit-box-shadow: 0 0 3px 3px rgb(203, 203, 203);
@@ -171,7 +203,7 @@ input, button, select, option, textarea {
     width: 100%;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], select {
 -webkit-appearance: none;
 -webkit-border-image: none;
 -webkit-box-shadow: rgb(255, 255, 255) 0px 1px 0px 0px, rgba(0, 0, 0, 0.2) 0px 10px 10px -10px inset;
