@@ -58,14 +58,6 @@ $(function() {
 	});
 });
 
-jQuery(function($){
-       $.datepicker.setDefaults({ dateFormat: 'yymmdd' });
-       });
-
-	$(function(){
-		$('#login-form').show();
-	});
-
 $(function() {
   $(".side-list1").sortable();
   $(".side-list1").disableSelection();
