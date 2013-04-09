@@ -47,7 +47,7 @@ jQuery(function($){
  <%= f.input_field :amount, :placeholder => "Amount", :class => "inline" %>
  <%= f.input_field :duration, :placeholder => "Lesson Length (minutes)", :class => "inline" %>
  <%= f.input_field :client_id, :collection => Client.where(:user_id => current_user.id), :include_blank => false, :class => "inline", :prompt =>  "Select a pupil" %>
-  <%= f.submit "Add Income", class: "inline" %><span id="success-message" class="success-message-income">Income added successfully.</span>
+ <%= f.submit "Add Income", class: "inline" %>
   
 <% end %>
 
