@@ -59,6 +59,10 @@ $(function() {
 });
 
 $(function() {
+  $('.date').datepicker();
+});
+
+$(function() {
   $(".side-list1").sortable();
   $(".side-list1").disableSelection();
   });

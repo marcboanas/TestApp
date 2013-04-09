@@ -33,8 +33,8 @@ else {
 $(".date_picker").datepicker({dateFormat:'yy/mm/dd', minDate: new Date(x,y,z), maxDate: new Date(a,b,c) });
 });
 
-jQuery(function($){
-  $.datepicker.setDefaults({ dateFormat: 'yymmdd' });
+$(function() {
+  $('.date').datepicker();
 });
 
 
@@ -47,7 +47,7 @@ jQuery(function($){
  <%= f.input_field :amount, :placeholder => "Amount", :class => "inline" %>
  <%= f.input_field :duration, :placeholder => "Lesson Length (minutes)", :class => "inline" %>
  <%= f.input_field :client_id, :collection => Client.where(:user_id => current_user.id), :include_blank => false, :class => "inline", :prompt =>  "Select a pupil" %>
- <%= datepicker_input "date","date" %>
+ <input type="text" id="date"></input>
  <%= f.submit "Add Income", class: "inline" %>
   
 <% end %>
